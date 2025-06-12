@@ -6,3 +6,5 @@
 3. PruebaFrontend
 4. angular-simple-crud
 5. signal-store
+6. carrito-compras-edit
+7. cam_movilidad
