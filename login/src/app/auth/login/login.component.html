@@ -1,0 +1,47 @@
+<div class="container mt-5">
+    <h2 class="text-center">Inicio de Sesión</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mt-4">
+  
+      <!-- Campo de nombre de usuario -->
+      <div class="mb-3">
+        <label for="username" class="form-label">Nombre de usuario</label>
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': f['username'].invalid && f['username'].touched }"
+        />
+        <div *ngIf="f['username'].invalid && f['username'].touched" class="invalid-feedback">
+          <div *ngIf="f['username'].errors?.['required']">El nombre de usuario es obligatorio.</div>
+          <div *ngIf="f['username'].errors?.['minlength']">
+            El nombre de usuario debe tener al menos 4 caracteres.
+          </div>
+        </div>
+      </div>
+  
+      <!-- Campo de contraseña -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': f['password'].invalid && f['password'].touched }"
+        />
+        <div *ngIf="f['password'].invalid && f['password'].touched" class="invalid-feedback">
+          <div *ngIf="f['password'].errors?.['required']">La contraseña es obligatoria.</div>
+          <div *ngIf="f['password'].errors?.['minlength']">
+            La contraseña debe tener al menos 6 caracteres.
+          </div>
+        </div>
+      </div>
+  
+      <!-- Botón de inicio de sesión -->
+      <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">
+        Iniciar Sesión
+      </button>
+    </form>
+  </div>
+  

@@ -1,0 +1,38 @@
+<p>formulario3 Reactivo works!</p>
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="formUser">
+      <div class="mb-2">
+        <label for="" class="form-label">Nombre:</label>
+        <input
+          type="text"
+          formControlName="name"
+          class="form-control"
+          placeholder="Por favor ingrese su nombre"
+        />
+        <div class="alert alert-danger mt-2" [hidden]="name.valid || name.pristine">
+            El nombre es obligatorio
+        </div>
+      </div>
+      <div class="mb-2">
+        <label for="" class="form-label">Email:</label>
+        <input
+          type="email" 
+          formControlName="email"
+          class="form-control"
+          placeholder="Por favor ingrese su email"
+        />
+        <div class="alert alert-danger mt-2" [hidden]="email.valid || email.pristine">
+            <span *ngIf="email.errors?.['required']">
+                El email es obligatorio
+            </span>
+            <span *ngIf="email.errors?.['email']">
+                El email debe ser válido
+            </span>
+        </div>
+      </div>
+      <button class="btn btn-success" [disabled]="formUser.invalid">Enviar formulario</button>
+    </form>
+  </div>
+</div>
+{{ formUser.get('name')?.value }}

@@ -1,0 +1,31 @@
+<p>======================= formulario2 works! ==============================</p>
+<div class="card text-left">
+  <img class="card-img-top" src="holder.js/100px180/" alt="">
+  <div class="card-body">
+   <form (ngSubmit)="procesar()" #formContact="ngForm">
+     <div class="mb-2">
+      <label for="" class="form-label">Nombre:</label>
+      <input type="text" name="nombre" placeholder="por favor ingrese un nombre" [(ngModel)]="persona.nombre"  class="form-control" required #nombre="ngModel">
+      <div class="alert alert-danger mt-2" [hidden]="nombre.valid || nombre.pristine">
+        El nombre es obligartorio
+      </div>
+
+    </div>
+    <div class="mb-2">
+        <div>
+          <label for="" class="form-label mb-2">Edad</label>
+            <input type="text" name="edad" placeholder="por favor ingrese la edad" [(ngModel)]="persona.edad" class="form-control" required #edad="ngModel">
+            <div class="alert alert-danger mt-2" [hidden]="edad.valid || edad.pristine">
+              La edad es obligartoria
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary" [disabled]="formContact.invalid">Enviar</button>
+   </form>
+  </div>
+</div>
+{{ nombre.errors | json }}
+<hr>
+{{ nombre.valid | json }}
+<hr>
+{{ formContact.valid }}
